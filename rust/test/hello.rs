@@ -200,7 +200,59 @@ main() { // this is where everything starts, well almost everything
     let number_as_string = number.to_string();
     println!("{} is string ? {}", number_as_string, number_as_string=="1995");
 
+    // Operators
+    /*
+        Source: https://doc.rust-lang.org/book/appendix-02-operators.html
+        Arithmetic: +, -, *, /, % (++ and -- are not supported)
+        Relational/comparision: >, <, >=, <=, ==, !=
+        Logical operators: &&, ||, !
+        Bitwise operators: &, |, ^, !, << (sift left), >> (shift left), >>> (right shift with zero)
+    */
+    let mut a = 4;
+    let b = a << 2/16;
+    let c = a >> 3;
+    a >>= 3;
+    println!("{}, {}, {}", b, c, a);
 
+    // Conditional
+    if a > 0 {
+
+    } else if a > -1 {
+
+    } else {
+
+    }
+
+    let st = "test";
+    let d = match st {  // seems ; at end of expression throws an error
+        "test" => {
+            println!("a is 0"); "10"
+        },
+        "prod" => "20",
+        _ => "30"
+    };
+    println!("{}", d);
+
+    for i in 1..10 {
+        if i % 2 == 0 {
+            continue;
+        }
+        println!("{}", i);
+    }
+    let mut x = 0;
+    while x < 3 {
+        println!("{}", x);
+        x += 1;
+    }
+
+    x = 0;
+    loop {
+        x += 1;
+        println!("{}", x);
+        if x==3 {
+            break;
+        }
+    }
 }
 
 // source: https://stackoverflow.com/questions/21747136/how-do-i-print-the-type-of-a-variable-in-rust
