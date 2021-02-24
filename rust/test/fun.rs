@@ -307,7 +307,56 @@ main() { // this is where everything starts, well almost everything
     print_person(person);
 
     // Arrays
+    /*
+        sequential memory blocks, static and cannot be resized.
+        and elements cannot be deleted only updated or modified
+        let array = [value1];
+        let array:[datatype;size] = [value1,value2];
+        let array:[datatype;size] = [default_value, size];
+    */
+    let arr:[i32; 4] = [10;4];
+    println!("{:?}, size: {}", arr, arr.len());
+    let arr = [10];
+    println!("{:?}", arr);
+    let arr:[&str;2] = ["String", "Array"];
+    println!("{:?}", arr);
+    
+    for index in 0..arr.len() {
+        println!("arr {} value is '{}'", index, arr[index]);
+    }
+    for val in arr.iter() {
+        println!("{}", val);
+    }
+    // arr[1] = "Tuple"; // cannot assign
 
+    let mut arr:[i32;4] = [10, 20, 30, 50];
+    arr[3] = 40;
+
+    set_array_values(&mut arr);
+    println!("{:?}", arr);
+
+    let _narr: usize = 10;
+    // let arr = [0; _narr]; // non-constant value error; length must be known at compile time
+
+    const N: usize = 10;
+    let arr = [0; N]; // allowed
+    println!("{:?}", arr);
+
+    // Memory
+    /*
+        There can only be one owner at a time, same memory location can not be owned by two variables
+        let k = 10; // here k is the owner of 10; two variables cannot point to the same location
+        ownership can only be transferred by assigning value of old variable to new variable, or passing or returning from function
+    */
+}
+
+fn set_array_values(arr:&mut [i32]) {
+    // let x = arr.len() as i32;
+    // print_type_of(&x);
+    for i in 1..arr.len()+1 {
+        // print_type_of(&i);
+        arr[i-1] = (i * i) as i32 ;
+    }
 }
 
 fn print_person(x:(&str,i8,f32)) {
