@@ -1,0 +1,7 @@
+
+
+docker run --name some-nginx --net=host -v `pwd`/:/usr/share/nginx/html:ro -d nginx
+
+
+docker run --name some-nginx -p 8089:80 -v `pwd`/:/usr/share/nginx/html:ro -d nginx
+
