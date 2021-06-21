@@ -347,7 +347,61 @@ main() { // this is where everything starts, well almost everything
         There can only be one owner at a time, same memory location can not be owned by two variables
         let k = 10; // here k is the owner of 10; two variables cannot point to the same location
         ownership can only be transferred by assigning value of old variable to new variable, or passing or returning from function
+
+        stack -> if size is known at compile time
+        heap -> if size is not known at compile time
+
+        object ownership changes when its assigned to new variable, so the variable cannot be used after moving the ownership to the new variable
+        but if its a primitive time, the value is just copied to the new variable instead of chaning the ownership, so they can be used even after assigning the value to the new variable
     */
+    let v = vec![1, 2, 3];
+    let v2 = v;
+    // println!("{:?}", v); // will throw compilation error
+    println!("{:?}", v2);
+    
+    let v_return = return_vector(v2);
+    println!("{:?}", v_return);
+    
+    /*
+        Borrowing ownership => temporarily transferring the ownership
+    */
+    let v = vec![1, 2, 3];
+    print_vector(v);
+    // println!("{:?}", v);// gives an error
+    let v = vec![1, 2, 3];
+    print_vector_borrowed(&v);
+    println!("{:?}", v);
+
+    let mut i = 2;
+    double_int(&mut i);
+    println!("{}", i);
+
+    let mut name:String = String::from("Crazy");
+    change_string(&mut name);
+    println!("the name is: {}", name);
+    
+    
+}
+
+fn change_string(name: &mut String) {
+    name.push_str(" Kid");
+    // *name = String::from("ASDF");
+}
+
+fn double_int(i: &mut i32) {
+    *i *= 2;
+}
+
+fn print_vector_borrowed(v: &Vec<i32>) {
+    println!("{:?}", v);
+}
+fn print_vector(v: Vec<i32>) {
+    println!("{:?}", v);
+}
+
+fn return_vector(v:Vec<i32>) -> Vec<i32> {
+    println!("{:?}", v);
+    return v;
 }
 
 fn set_array_values(arr:&mut [i32]) {
