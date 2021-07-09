@@ -32,3 +32,5 @@
 *.app
 
 *-checkpoint.ipynb
+**/data/
+**/test_data/
