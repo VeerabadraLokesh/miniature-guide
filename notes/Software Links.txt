@@ -1,0 +1,10 @@
+
+
+
+
+Word editor on web
+A real-time collaborative editor for the web
+https://github.com/ether/etherpad-lite
+
+
+
